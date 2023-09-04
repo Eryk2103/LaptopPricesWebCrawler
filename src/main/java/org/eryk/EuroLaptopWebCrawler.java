@@ -11,8 +11,6 @@ import org.openqa.selenium.WebElement;
 
 //Web crawler for RtvEuroAgd website
 public class EuroLaptopWebCrawler extends LaptopWebCrawler {
-
-
     public void crawl() {
         this.driver.get("https://www.euro.com.pl/search/laptopy-i-netbooki.bhtml?keyword=" + this.searchStr);
 
@@ -24,7 +22,6 @@ public class EuroLaptopWebCrawler extends LaptopWebCrawler {
                 acceptCookies.click();
             }
             catch(NoSuchElementException ignored) {
-
             }
         }
 
@@ -61,7 +58,8 @@ public class EuroLaptopWebCrawler extends LaptopWebCrawler {
 
         for(Element laptop : laptopList) {
             Laptop item = new Laptop();
-            item.setName(laptop.text());
+            item.setName(laptop.select(".box-medium__link").text());
+            item.setPrice(laptop.selectFirst(".price__value").text());
             this.laptops.add(item);
         }
     }

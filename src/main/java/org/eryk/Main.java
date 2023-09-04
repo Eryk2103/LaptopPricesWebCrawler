@@ -10,7 +10,8 @@ public class Main {
 
         ArrayList<Laptop> laptops = crawler.getLaptops();
         for(Laptop item : laptops) {
-            System.out.println(item.getName());
+            System.out.println("name: " + item.getName());
+            System.out.println("price: " + item.getPrice());
         }
         crawler.close();
     }
